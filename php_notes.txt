@@ -1,0 +1,24 @@
+
+php artisan tinker
+
+****** Commands *******************
+php artisan migrate
+php artisan migrate:fresh -> delete everything and start from scratch
+
+php artisan db push
+
+php artisan help make:model
+
+php artisan help make:model -m
+
+php arttisan help make:factory
+
+***** Tinker ************
+App\Model\User::factory(20)->create()
+App\Model\User::all()
+
+
+****** Models **************
+$job = App\Models\User::first();
+$job->employer;
+$job->employer->name;
