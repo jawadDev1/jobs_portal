@@ -13,9 +13,15 @@ php artisan help make:model -m
 
 php arttisan help make:factory
 
+php artisan migrate:rollback -> undo migration
+
 ***** Tinker ************
 App\Model\User::factory(20)->create()
 App\Model\User::all()
+
+$tag->jobs;
+$tag->jobs()->get()
+$tag->jobs()->get()->pluck('title')
 
 
 ****** Models **************
