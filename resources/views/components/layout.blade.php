@@ -127,10 +127,12 @@
         </nav>
 
         <header class="bg-white shadow-sm">
-            <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+            <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 flex justify-between">
                 <h1 class="text-3xl font-bold tracking-tight text-gray-900">
                     {{ $heading }}
                 </h1>
+
+                <a href="/jobs/create" class="px-6 py-3 border border-gray-300 rounded bg-green-50">Create</a>
             </div>
         </header>
         <main class="bg-gray-900 min-h-screen">

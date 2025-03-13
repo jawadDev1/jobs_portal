@@ -14,16 +14,24 @@
     </button>
 
 
-    <ul class="my-8">
+    <div class="my-8 text-white space-y-4 ">
 
         @foreach ($jobs as $job)
-            <li class="text-xl text-white">
-                <a href="/jobs/{{ $job['id'] }}">
-                    <strong> {{ $job['title'] }} </strong> :Pays {{ $job['salary'] }}
-                </a>
-            </li>
+            <a href="/jobs/{{ $job['id'] }}" class="block py-4 px-3 border border-gray-300 shadow rounded">
+                <div>
+                    <span class="font-bold text-blue-600">
+                        {{ $job->employer->name }}
+                    </span>
+                </div>
+                <h2> <strong> {{ $job['title'] }} </strong> :Pays {{ $job['salary'] }}</h2>
+            </a>
         @endforeach
 
-    </ul>
+    </div>
+
+    <div>
+        {{ $jobs->links() }}
+
+    </div>
 
 </x-layout>

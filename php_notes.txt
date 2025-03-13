@@ -15,6 +15,20 @@ php arttisan help make:factory
 
 php artisan migrate:rollback -> undo migration
 
+php artisan vendor:publish -> like expo eject
+
+php artisan db:seed
+php asrtisan migrate:fresh --seed
+
+php asrtisan make:seeder 
+
+php asrtisan make:controller
+
+php artisan route:list
+php artisan route:list  --except-vendor
+
+
+
 ***** Tinker ************
 App\Model\User::factory(20)->create()
 App\Model\User::all()
