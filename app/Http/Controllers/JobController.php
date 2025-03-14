@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\JobPosted;
 use App\Models\Job;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Mail;
 
 class JobController extends Controller
 {
@@ -23,15 +28,30 @@ class JobController extends Controller
         return view("jobs.create");
     }
 
-    public function edit($id)
+    public function edit(Job $job)
     {
-        $job = Job::find($id);
+
+
+        // if (Auth::guest()) {
+        //     return redirect('/login');
+        // };
+
+        // $job = Job::find($id);
+
+        // Gate::authorize("edit-job", $job);
+
+
+        // if ($job->employer->user->isNot(Auth::user())) {
+        //     abort(403);
+        // }
 
         return view("jobs.edit", ["job" => $job]);
     }
 
     public function store()
     {
+
+
         // dd(request('title'));
         // dd(request()->all());
         request()->validate([
@@ -40,7 +60,7 @@ class JobController extends Controller
             "name" => ['required'],
         ]);
 
-        Job::create([
+        $job =  Job::create([
 
             "name" => request('name'),
             "title" => request('title'),
@@ -48,11 +68,14 @@ class JobController extends Controller
             "employer_id" => 1,
         ]);
 
+        Mail::to($job->employer->user)->queue(new JobPosted($job));
+        // Mail::to($job->employer->user)->send(new JobPosted($job));
+
 
         return redirect('/jobs');
     }
 
-    public function show($job)
+    public function show(Job $job)
     {
         // $job = Job::find($id);
 

@@ -16,12 +16,17 @@
 
     <div class="mt-6 space-x-4">
 
-        <x-button href="/jobs/{{ $job->id }}/edit" class="">
-            Update
-        </x-button>
-        <button form="delete-form" type="submit" class="bg-red-600 text-white py-2 px-3">
-            Delete
-        </button>
+        @can('edit', $job)
+            <x-button href="/jobs/{{ $job->id }}/edit" class="">
+                Update
+            </x-button>
+
+            <button form="delete-form" type="submit" class="bg-red-600 text-white py-2 px-3">
+                Delete
+            </button>
+        @endcan
+
+
 
     </div>
 
